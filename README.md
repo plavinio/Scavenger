@@ -1,3 +1,3 @@
 # Scavenger
 
-[hopefully a link](Team/Paige_Lavinio.md)
+[hopefully a link](../Scavenger/master/Team/Paige_Lavinio.md)
