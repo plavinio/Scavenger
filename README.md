@@ -1,3 +1,3 @@
 # Scavenger
 
-[hopefully a link](Scavenger/Team/Paige's\ Info.md)
+[hopefully a link](Team/Paige_Lavinio.md)
