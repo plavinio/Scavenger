@@ -19,6 +19,6 @@ At the moment our target audience is our local University campus, but in theory 
 
 ## Topic requirements:
 
-- 
--
+- Data Storage (Databases)
+- Mobile
 
