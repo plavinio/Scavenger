@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang = "en">
   <meta charset = "UTF-8">
+  <link href="Lost.css" rel="stylesheet">
 
   <title>Lost Item Creator</title>
 
   <body>
-    <h1>Add a Lost Item</h1>
+    <h1 class="logoTxt"><img src="Hayley shared a drawing with you.png" alt="logo" class="logo" width="50px" height="50px">Scavenger</h1><br><br>
+    
+    <h2>Add a Lost Item</h2>
 
+    <form action = "???" method = "POST" enctype = "multipart/form-data">
+      <label for="Cat1">Category 1</label>
+      <select name="Cat1">
+	<!--Add more options based on what we decide-->
+	<option value="first">First</option>
+	<option value="second">Second</option>
+	<option value="etc...">Etc...</option>
+      </select>
 
+      <label for="Cat2">Category 2</label>
+      <select name="Cat2">
+	<!--Add more options based on what we decide-->
+      	<option value="first">First</option>
+        <option value="second">Second</option>
+      	<option value="etc...">Etc...</option>
+      </select>
 
+      <label for="IMAGE">Insert Image of Item Here:</label>
+      <input type="file" name="pic" id="pic">
+      
+      <p>Etc...</p>
+
+      <input type="submit">
+      
+    </form>
+    <!--Add more categories once we figure out how many we want-->
 
     
   </body>
