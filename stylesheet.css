@@ -13,6 +13,15 @@ h1.logoTxt{
     font-family: 'Lobster';
     color: darksalmon;
 }
+h2{
+    font-family: 'Lobster';
+    color: darksalmon;
+    text-align: center;
+}
+div.form{
+    color: darksalmon;
+    text-align: center;
+}
 a {
     text-decoration: none;
 }
