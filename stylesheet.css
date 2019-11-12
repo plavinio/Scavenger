@@ -12,6 +12,8 @@ body{
 h1.logoTxt{
     font-family: 'Lobster';
     color: darksalmon;
+}
+a {
     text-decoration: none;
 }
 p.about{
