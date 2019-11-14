@@ -1,6 +1,6 @@
 //Javascript for Scavenger app
 
-let MasterCats = JSON.parse('{"outerCats":[{"Location":["fill in"]},{"mainCats":["**"]},{"extend as necessary"}]}');
+let MasterCats = JSON.parse('"outerCats":[{"Location":["fill in"]},{"mainCats":["**"]},{"extend as necessary"}]');
 
 
 //outerCatNames.push(MasterCats.outerCats[cnami]);}
