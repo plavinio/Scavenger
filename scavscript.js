@@ -7,4 +7,4 @@ let MasterCats = JSON.parse('"outerCats":[{"Location":["fill in"]},{"mainCats":[
 $(document).ready(function() { //When DOM ready
     console.log("outer category names: ");
     for (let cnami in MasterCats.outerCats){console.log("            " + MasterCats.outerCats[cnami]);}
-}
+};      
