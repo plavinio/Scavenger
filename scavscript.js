@@ -32,4 +32,19 @@ $(document).ready(function() { //When DOM ready
     for(x in cats){
         $('<option value='+cats[x].main+'>'+cats[x].main+'</option>').appendTo($("#Cat1"));
     }
+});
+$("select#Cat1").change(function(){
+    let ddl = document.getElementById("Cat1");
+    let selectedValue = ddl.options[ddl.selectedIndex].value;
+
+    $("#Cat2").empty();
+    $('<option value="" disabled selected>--Select--</option>').appendTo($("#Cat2"));
+
+    for(x in cats){
+        if(cats[x].main == selectedValue){
+            for(y in cats[x].subs){
+                $('<option value='+cats[x].subs[y]+'>'+cats[x].subs[y]+'</option>').appendTo($("#Cat2"));
+            }
+        }
+    }
 });      
