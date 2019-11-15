@@ -30,6 +30,6 @@ let cats = [
 $(document).ready(function() { //When DOM ready
     console.log("outer category names: ");
     for(x in cats){
-        $('<option value='+x.main+'>'+x.main+'</option>').appendTo($("#Cat1"));
+        $('<option value='+cats[x].main+'>'+cats[x].main+'</option>').appendTo($("#Cat1"));
     }
 });      
