@@ -11,22 +11,22 @@ body{
 }
 h1.logoTxt{
     font-family: 'Lobster';
-    color: darksalmon;
+    color: antiquewhite;
 }
 h2, h3{
     font-family: 'Lobster';
-    color: darksalmon;
+    color: antiquewhite;
     text-align: center;
 }
 div.form{
-    color: darksalmon;
+    color: antiquewhite;
     text-align: center;
 }
 a {
     text-decoration: none;
 }
 p.about{
-    color: darksalmon;
+    color: antiquewhite;
     text-align: center;
 }
 button{
