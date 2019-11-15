@@ -3,6 +3,8 @@
   <meta charset = "UTF-8">
   <link href="stylesheet.css" rel="stylesheet">
   <script src="scavscript.js" defer></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="jquery-3.2.1.min.js"></script>
 <title>List of Found Items</title>
 
 <body>
@@ -13,20 +15,16 @@
 
     <form action = "???" method = "POST" enctype = "multipart/form-data">
       <div class = "form">
-        <label for="Ser1">Category 1: </label>
-        <select name="Ser1">
+        <label for="Cat1">Category 1: </label>
+        <select id="Cat1">
     	    <!--Add more options based on what we decide-->
-	        <option value="first">First</option>
-	        <option value="second">Second</option>
-          <option value="etc...">Etc...</option>
+	        <option value="" disabled selected>--Select--</option>
         </select>
       
-        <label for="Ser2">Category 2: </label>
-        <select name="Ser2">
+        <label for="Cat2">Category 2: </label>
+        <select id="Cat2">
     	    <!--Add more options based on what we decide-->
-	        <option value="first">First</option>
-	        <option value="second">Second</option>
-          <option value="etc...">Etc...</option>
+	        <option value="" disabled selected>--Select--</option>
         </select>
 
         <input type="submit">
