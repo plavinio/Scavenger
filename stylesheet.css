@@ -57,7 +57,9 @@ button.foundButton{
 
 #searchResults table tr td{
     border: 1px dashed coral;
-    
+    adding: 2px 5px;
     
 }
-
+#searchResults table th{
+    text-align: center;
+}
