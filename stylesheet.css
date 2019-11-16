@@ -55,3 +55,9 @@ button.foundButton{
     margin: 5% 25%; 
 }
 
+#searchResults table tr{
+    border: 1px dashed coral;
+    padding: 2px 5px;
+    
+}
+
