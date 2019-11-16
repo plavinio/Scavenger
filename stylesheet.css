@@ -48,3 +48,7 @@ button.foundButton{
     display:inline-block;
     margin-right:5px;
 }
+div #searchResults{
+    text-align: center;
+    color: antiquewhite;
+}
