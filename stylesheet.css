@@ -55,7 +55,7 @@ button.foundButton{
     margin: 5% 25%; 
 }
 
-#searchResults table tr{
+#searchResults table tr td{
     border: 1px dashed coral;
     padding: 2px 5px;
     
