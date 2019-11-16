@@ -51,6 +51,6 @@ button.foundButton{
 #searchResults{
     color: antiquewhite;
     border: 2px solid coral;
-    padding: 5% 25%; 
+    margin: 5% 25%; 
 }
 
