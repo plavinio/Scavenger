@@ -48,7 +48,8 @@ button.foundButton{
     display:inline-block;
     margin-right:5px;
 }
-div #searchResults{
-    text-align: center;
+#searchResults{
     color: antiquewhite;
+    padding: 0%, 10%; 
 }
+
