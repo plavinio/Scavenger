@@ -13,7 +13,7 @@
     <h2>Current Found Items</h2>
     <h3>Search</h3>
 
-    <form action = "???" method = "POST" enctype = "multipart/form-data">
+    <form action = "???" method = "POST" enctype = "multipart/form-data" id="form">
       <div class = "form">
         <label for="Cat1">Category 1: </label>
         <select id="Cat1">
@@ -27,10 +27,11 @@
 	        <option value="" disabled selected>--Select--</option>
         </select>
 
-        <input type="submit">
+        <input type="submit" id="search">
       </div>
     </form>
-
+    <div id="formErrors" display="none"></div>
+    
     <div  id="searchResults">
       <table> <!--Something important to do when we have actual data is to use rowspan (or something) to even out row shapes-->
 	<tr>

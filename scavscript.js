@@ -24,9 +24,6 @@ let cats = [
     }
 ];
 
-//outerCatNames.push(MasterCats.outerCats[cnami]);}     <-- I'll get rid of this when I'm done don't worry (-Paige)
-// "outerCats":[{"Location":["fill in"]},{"mainCats":["**"]},{"extend as necessary"}]
-
 $(document).ready(function() { //When DOM ready
     console.log("outer category names: ");
     for(x in cats){
@@ -45,6 +42,28 @@ $("select#Cat1").change(function(){
             for(y in cats[x].subs){
                 $('<option value='+cats[x].subs[y]+'>'+cats[x].subs[y]+'</option>').appendTo($("#Cat2"));
             }
+        }
+    }
+});
+$("#form").submit(function(){
+    let c1 = document.getElementById("Cat1");
+    let cat1val = c1.options[c1.selectedIndex].value;
+    let c2 = document.getElementById("Cat2");
+    let cat2val = c2.options[c2.selectedIndex].value;
+    let areErrs = false;
+
+    if(cat1val == "" || cat2val == ""){
+        areErrs = true;
+    }
+
+    if(areErrs){
+        document.getElementById("formErrors").style.display = "block";
+        $('<ul></ul>').appendTo($("#formErrors"));
+        if(cat1val == ""){
+            $('<li> Please select a first category</li>').appendTo("ul");
+        }
+        if(cat2val == ""){
+            $('<li> Please select a second category</li>').appendTo("ul");
         }
     }
 });      
