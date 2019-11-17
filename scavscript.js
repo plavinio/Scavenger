@@ -35,7 +35,7 @@ $("select#Cat1").change(function(){
     let selectedValue = ddl.options[ddl.selectedIndex].value;
 
     $("#Cat2").empty();
-    $('<option value="" disabled selected>--Select--</option>').appendTo($("#Cat2"));
+    $('<option value="none" disabled selected>--Select--</option>').appendTo($("#Cat2"));
 
     for(x in cats){
         if(cats[x].main == selectedValue){
@@ -45,24 +45,23 @@ $("select#Cat1").change(function(){
         }
     }
 });
-$("#form").submit(function(){
+$("form").submit(function(){
     let c1 = document.getElementById("Cat1");
     let cat1val = c1.options[c1.selectedIndex].value;
     let c2 = document.getElementById("Cat2");
     let cat2val = c2.options[c2.selectedIndex].value;
     let areErrs = false;
 
-    if(cat1val == "" || cat2val == ""){
+    if(cat1val == "none" || cat2val == "none"){
         areErrs = true;
     }
 
     if(areErrs){
-        document.getElementById("formErrors").style.display = "block";
         $('<ul></ul>').appendTo($("#formErrors"));
-        if(cat1val == ""){
+        if(cat1val == "none"){
             $('<li> Please select a first category</li>').appendTo("ul");
         }
-        if(cat2val == ""){
+        if(cat2val == "none"){
             $('<li> Please select a second category</li>').appendTo("ul");
         }
     }
