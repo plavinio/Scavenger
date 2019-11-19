@@ -65,10 +65,10 @@ function checkForm(){
     if(formErrs){
         $("ul").empty();
         if(cat1val == "none"){
-            $('<li> Please select a first category</li>').appendTo("ul");
+            $('<li>Please select a first category</li>').appendTo("ul");
         }
         if(cat2val == "none"){
-            $('<li> Please select a second category</li>').appendTo("ul");
+            $('<li>Please select a second category</li>').appendTo("ul");
         }
     }
 }
