@@ -45,7 +45,8 @@ $("select#Cat1").change(function(){
         }
     }
 });
-$("form").submit(function(){
+
+function checkForm(){
     let c1 = document.getElementById("Cat1");
     let cat1val = c1.options[c1.selectedIndex].value;
     let c2 = document.getElementById("Cat2");
@@ -65,4 +66,9 @@ $("form").submit(function(){
             $('<li> Please select a second category</li>').appendTo("ul");
         }
     }
+}
+
+$("form").submit(function(event){
+    checkForm();
+    event.preventDefault();
 });      
