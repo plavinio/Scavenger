@@ -10,7 +10,7 @@ body{
     background-color: firebrick;
 }
 hr {
-    color: coral;
+    border-color: coral;
 }
 h1.logoTxt{
     font-family: 'Lobster';
