@@ -24,6 +24,8 @@ let cats = [
     }
 ];
 
+
+
 $(document).ready(function() { //When DOM ready
     console.log("outer category names: ");
     for(x in cats){
@@ -58,7 +60,6 @@ function checkForm(){
     }
 
     if(areErrs){
-        $('<ul></ul>').appendTo($("#formErrors"));
         if(cat1val == "none"){
             $('<li> Please select a first category</li>').appendTo("ul");
         }
