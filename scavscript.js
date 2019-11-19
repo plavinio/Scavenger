@@ -24,7 +24,7 @@ let cats = [
     }
 ];
 
-
+let formErrs = false;
 
 $(document).ready(function() { //When DOM ready
     console.log("outer category names: ");
@@ -53,13 +53,17 @@ function checkForm(){
     let cat1val = c1.options[c1.selectedIndex].value;
     let c2 = document.getElementById("Cat2");
     let cat2val = c2.options[c2.selectedIndex].value;
-    let areErrs = false;
 
     if(cat1val == "none" || cat2val == "none"){
-        areErrs = true;
+        formErrs = true;
+    }
+    else{
+        formErrs = false;
+        $("ul").empty();
     }
 
-    if(areErrs){
+    if(formErrs){
+        $("ul").empty();
         if(cat1val == "none"){
             $('<li> Please select a first category</li>').appendTo("ul");
         }
