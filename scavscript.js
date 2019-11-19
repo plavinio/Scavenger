@@ -73,7 +73,14 @@ function checkForm(){
     }
 }
 
-$("form").submit(function(event){
+$("form#searchForm").submit(function(event){
+    checkForm();
+    if(formErrs){
+        event.preventDefault();
+    }
+});
+
+$("form#foundForm").submit(function(event){
     checkForm();
     if(formErrs){
         event.preventDefault();
