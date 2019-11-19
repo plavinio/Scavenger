@@ -75,5 +75,7 @@ function checkForm(){
 
 $("form").submit(function(event){
     checkForm();
-    event.preventDefault();
+    if(formErrs){
+        event.preventDefault();
+    }
 });      
