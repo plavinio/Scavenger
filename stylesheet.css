@@ -48,14 +48,14 @@ button.foundButton{
     display:inline-block;
     margin-right:5px;
 }
-#searchResults{
+div.searchResults{
     color: antiquewhite;
     border: 2px solid coral;
     padding: 2% 5%;
     margin: 5% 25%; 
 }
 
-#searchResults table tr td{
+div.searchResults table tr td{
     border: 1px dashed coral;
     adding: 2px 5px;
     
