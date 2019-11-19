@@ -78,4 +78,16 @@ $("form").submit(function(event){
     if(formErrs){
         event.preventDefault();
     }
-});      
+});
+
+$("form#lostForm").submit(function(event){
+    if(window.confirm("WAIT! Only press ok if you've checked the found items list. Otherwise, press cancel.")){
+        checkForm();
+        if(formErrs){
+            event.preventDefault();
+        }
+    }
+    else{
+        event.preventDefault();
+    }
+});
