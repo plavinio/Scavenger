@@ -8,11 +8,10 @@
 }
 body{
     background-color: firebrick;
-    color: antiquewhite;
 }
 h1.logoTxt{
     font-family: 'Lobster';
-    /*color: antiquewhite;*/
+    color: antiquewhite;
 }
 h2, h3{
     font-family: 'Lobster';
@@ -25,6 +24,7 @@ div.form{
 }
 a {
     text-decoration: none;
+    color: antiquewhite;
 }
 p.about{
     color: antiquewhite;
