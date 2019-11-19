@@ -9,6 +9,9 @@
 body{
     background-color: firebrick;
 }
+hr {
+    color: coral;
+}
 h1.logoTxt{
     font-family: 'Lobster';
     color: antiquewhite;
@@ -65,4 +68,8 @@ div.searchResults table tr td{
 #formErrors{
     background-color: white;
     color: red;
+}
+ul{
+    text-align: center;
+    list-style-position: inside;
 }
