@@ -24,6 +24,10 @@ let cats = [
     }
 ];
 
+let lostObs = [];
+
+let foundObs = [];
+
 let formErrs = false;
 
 $(document).ready(function() { //When DOM ready
@@ -73,6 +77,44 @@ function checkForm(){
     }
 }
 
+function lostSub(){
+    let c1 = document.getElementById("Cat1");
+    let cat1val = c1.options[c1.selectedIndex].value;
+
+    let c2 = document.getElementById("Cat2");
+    let cat2val = c2.options[c2.selectedIndex].value;
+
+    let contact = document.getElementById("contact").value;
+
+    //unsure if this is right but we gonna see
+    let img = document.getElementById("pic").value;
+
+    let valStr = '{"main":"'+cat1val+'","sub":"'+cat2val+'", "contact":"'+contact+'", "img":"'+img+'"}';
+
+    let parsedVal = JSON.parse(valStr);
+
+    lostObs.push(parsedVal);
+}
+
+function foundSub(){
+    let c1 = document.getElementById("Cat1");
+    let cat1val = c1.options[c1.selectedIndex].value;
+
+    let c2 = document.getElementById("Cat2");
+    let cat2val = c2.options[c2.selectedIndex].value;
+
+    let contact = document.getElementById("contact").value;
+
+    //unsure if this is right but we gonna see
+    let img = document.getElementById("pic").value;
+
+    let valStr = '{"main":"'+cat1val+'","sub":"'+cat2val+'", "contact":"'+contact+'", "img":"'+img+'"}';
+
+    let parsedVal = JSON.parse(valStr);
+
+    foundObs.push(parsedVal);
+}
+
 $("form#searchForm").submit(function(event){
     checkForm();
     if(formErrs){
@@ -85,6 +127,7 @@ $("form#foundForm").submit(function(event){
     if(formErrs){
         event.preventDefault();
     }
+    foundSub();
 });
 
 $("form#lostForm").submit(function(event){
@@ -93,6 +136,7 @@ $("form#lostForm").submit(function(event){
         if(formErrs){
             event.preventDefault();
         }
+        lostSub();
     }
     else{
         event.preventDefault();
