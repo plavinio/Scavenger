@@ -74,5 +74,6 @@ ul{
     list-style-position: inside;
 }
 #colorscheme{
-    float: right;   
+    float: right;
+    background-color: coral;
 }
