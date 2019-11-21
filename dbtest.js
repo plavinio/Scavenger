@@ -50,7 +50,6 @@ client.connect(function (err, client) {
 	    //else console.log("Entry replacement not successful");
 	};
 	
-
 	function findEntry(db, entry){
 	    let found = db.find(entry);
 	    console.log("Found entry: \n" + found + "/n");
@@ -74,7 +73,6 @@ client.connect(function (err, client) {
 	    //    console.log("\n \n \n");
 	};
 	
-
 	function test_find(db, entry){
 	    findEntry(db, entry);
 	    console.log("\n \n \n");
@@ -98,9 +96,10 @@ client.connect(function (err, client) {
 
 	
 	//Tests
-       	clearDB(test);
-
 	
+	clearDB(test);
+
+		
 	addEntry(test, e0);
 	addEntry(test, e1);
 	addEntry(test, e2);
@@ -109,11 +108,11 @@ client.connect(function (err, client) {
 	addEntry(test, e5);
 	addEntry(test, e6);
 
-	/*
-	delEntry(test, e0);
-	delEntry(test, e1);
-	delEntry(test, e2);
-	*/
+	
+	//	delEntry(test, e0);
+	//	delEntry(test, e1);
+	//	delEntry(test, e2);
+	
 
        	//addEntry(test, e0);
        	//addEntry(test, e1);
