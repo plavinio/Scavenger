@@ -74,5 +74,5 @@ ul{
     list-style-position: inside;
 }
 #colorscheme{
-    align: right;   
+    float: right;   
 }
