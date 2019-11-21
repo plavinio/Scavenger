@@ -6,10 +6,13 @@ let mongoose = require('mongoose');
 const connectionURL = process.env.MONGO_URL;
 console.log("connection url = " + connectionURL);
 console.log("proc.env.M_U = " + process.env.MONGO_URL);
-const dbName = 'test_db';
+//const dbName = 'test_db';
 const client = new MongoClient(connectionURL, { useNewUrlParser: true });
 client.connect(function (err, client) {
-    assert.equal(null, err);
+	console.log("Getting as far as connect fxn");
+	console.log("Err = " + err);
+	assert.equal(null, err);
+	console.log("After assert err = " + err);
     console.log("Connected to server");
 	const test = client.db("scav_test_db").collection("scav_test_col");
 	
@@ -98,17 +101,17 @@ client.connect(function (err, client) {
 	//Tests
 	
 	clearDB(test);
-
+	/*
 		
-	/*	addEntry(test, e0);
+	addEntry(test, e0);
 	addEntry(test, e1);
 	addEntry(test, e2);
 	addEntry(test, e3);
 	addEntry(test, e4);
 	addEntry(test, e5);
 	addEntry(test, e6);
+
 	*/
-	
 	//	delEntry(test, e0);
 	//	delEntry(test, e1);
 	//	delEntry(test, e2);
