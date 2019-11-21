@@ -42,13 +42,14 @@ client.connect(function (err, client) {
 	    else console.log("Entry was not deleted");
 	};
 
-	// This fails interestingly. If we ever really want to implement a replace function, we'll have to look into it further
-	/*	function repEntry(db, old_entry, new_entry){
-	    let ran = db.findOneAndReplace(old_entry, new_entry);
-	    if(ran) console.log("Entry (1) was replaced with entry (2): \n (1): \n" + old_entry + "\n (2): \n" + new_entry + "\n");
-	    else console.log("Entry replacement not successful");
+	// This fails interestingly. If we ever want to implement a replace function, we'll have to look into it further
+	// PLEASE DO NOT UNCOMMENT THIS FUNCTION'S BODY
+	function repEntry(db, old_entry, new_entry){
+	    //let ran = db.findOneAndReplace(old_entry, new_entry);
+	    //if(ran) console.log("Entry (1) was replaced with entry (2): \n (1): \n" + old_entry + "\n (2): \n" + new_entry + "\n");
+	    //else console.log("Entry replacement not successful");
 	};
-	*/
+	
 
 	function findEntry(db, entry){
 	    let found = db.find(entry);
@@ -67,12 +68,12 @@ client.connect(function (err, client) {
 	};
 
 	// Test corresponds to repEntry, which fails intriguingly
-	/*
+	// PLEASE DO NOT UNCOMMENT THIS FUNCTION'S BODY
 	function test_rep(db, old_entry, new_entry){
-	    repEntry(db, old_entry, new_entry);
-            console.log("\n \n \n");
+	    //    repEntry(db, old_entry, new_entry);
+	    //    console.log("\n \n \n");
 	};
-	*/
+	
 
 	function test_find(db, entry){
 	    findEntry(db, entry);
@@ -84,22 +85,22 @@ client.connect(function (err, client) {
 	};
 
 	// Test entries
-	let e0 = {cat_main: "", cat_sub: ""};
-	let e1 = {cat_main: "urgent", cat_sub: ""};
-	let e2 = {cat_main: "", cat_sub: "keys"};
-	let e3 = {cat_main: "urgent", cat_sub: "keys"};
-	let e4 = {cat_main: "urgent", cat_sub: "keys"};
-	let e5 = {cat_main: "urgent", cat_sub: "money"};
-	let e6 = {cat_main: "tech", cat_sub: "phone"};
+	let e0 = {_id: 0, cat_main: "", cat_sub: ""};
+	let e1 = {_id: 1, cat_main: "urgent", cat_sub: ""};
+	let e2 = {_id: 2, cat_main: "", cat_sub: "keys"};
+	let e3 = {_id: 3, cat_main: "urgent", cat_sub: "keys"};
+	let e4 = {_id: 4, cat_main: "urgent", cat_sub: "keys"};
+	let e5 = {_id: 5, cat_main: "urgent", cat_sub: "money"};
+	let e6 = {_id: 6, cat_main: "tech", cat_sub: "phone"};
 	/*let e7 = {cat_main: "", cat_sub: ""};
 	let e8 = {cat_main: "", cat_sub: ""};
 	let e9 = {cat_main: "", cat_sub: ""};*/
 
 	
 	//Tests
-	//	clearDB(test);
+       	clearDB(test);
 
-	/*
+	
 	addEntry(test, e0);
 	addEntry(test, e1);
 	addEntry(test, e2);
@@ -108,6 +109,7 @@ client.connect(function (err, client) {
 	addEntry(test, e5);
 	addEntry(test, e6);
 
+	/*
 	delEntry(test, e0);
 	delEntry(test, e1);
 	delEntry(test, e2);
