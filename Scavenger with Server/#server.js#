@@ -1,0 +1,36 @@
+// server.js
+const express = require("express");
+const app = express();
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+let mongoose = require('mongoose');
+const connectionURL = process.env.MONGO_URL;
+console.log("connection url = " + connectionURL);
+console.log("proc.env.M_U = " + process.env.MONGO_URL);
+
+// Serve static files from the public dir
+app.use(express.static("public"));
+
+// Start the web server on port 3000
+app.listen(3000, () => {
+  console.log('Listening on http://localhost:3000');
+  console.log('Try visiting http://localhost:3000/hello.html');
+});
+
+function submit_lost(json_file){
+    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
+    client.connect(function (err, client) {
+        console.log("Getting as far as connect fxn");
+        console.log("Err = " + err);
+        assert.equal(null, err);
+	console.log("After assert err = " + err);
+	console.log("Connected to server");
+	const db = client.db("scav_test_db").collection("scav_test_col");
+
+	let ran = db.insertOne(json_file);
+	if (ran) console.log("Entry added");
+	else console.log("Entry not added");
+	
+    client.close();
+    });
+}

@@ -8,6 +8,15 @@ const connectionURL = process.env.MONGO_URL;
 console.log("connection url = " + connectionURL);
 console.log("proc.env.M_U = " + process.env.MONGO_URL);
 
+// Serve static files from the public dir
+app.use(express.static("public"));
+
+// Start the web server on port 3000
+app.listen(3000, () => {
+  console.log('Listening on http://localhost:3000');
+  console.log('Try visiting http://localhost:3000/hello.html');
+});
+
 const client = new MongoClient(connectionURL, { useNewUrlParser: true });
 client.connect(function (err, client) {
         console.log("Getting as far as connect fxn");
@@ -45,12 +54,3 @@ client.connect(function (err, client) {
 
 	client.close();
     });
-
-// Serve static files from the public dir
-app.use(express.static("public"));
-
-// Start the web server on port 3000
-app.listen(3000, () => {
-  console.log('Listening on http://localhost:3000');
-  console.log('Try visiting http://localhost:3000/hello.html');
-});
