@@ -101,7 +101,7 @@ client.connect(function (err, client) {
 	//Tests
 	
 	clearDB(test);
-	/*
+
 		
 	addEntry(test, e0);
 	addEntry(test, e1);
@@ -111,7 +111,7 @@ client.connect(function (err, client) {
 	addEntry(test, e5);
 	addEntry(test, e6);
 
-	*/
+
 	//	delEntry(test, e0);
 	//	delEntry(test, e1);
 	//	delEntry(test, e2);

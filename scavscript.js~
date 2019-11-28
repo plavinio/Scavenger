@@ -93,8 +93,22 @@ function lostSub(){
     let valStr = '{"main":"'+cat1val+'","sub":"'+cat2val+'", "contact":"'+contact+'", "img":"'+img+'"}';
 
     let parsedVal = JSON.parse(valStr);
+    /*
+    client.connect(function (err, client) {
+	    assert.equal(null, err);
+	    console.log("Connected to server");
+	    const db = client.db("scav_test_db").collection("scav_demo_lost");
 
-    lostObs.push(parsedVal);
+	    function addEntry(db, entry){
+		let ran = db.insertOne(entry);
+		if(ran) console.log("Entry added: \n" + entry + "\n");
+		else console.log("Entry was not added");
+	    };
+
+	    addEntry(db, parsedVal);
+	});
+    */
+    //lostObs.push(parsedVal);
 }
 
 function foundSub(){
