@@ -37,6 +37,16 @@ $(document).ready(function() { //When DOM ready
         $('<option value='+cats[x].main+'>'+cats[x].main+'</option>').appendTo($("#Cat1"));
     }
 });
+
+$("button#colorscheme").click(function(){
+    if(document.body.style.getPropertyValue('background-color') == 'firebrick'){
+        document.body.style.setProperty('background-color', 'blue'); 
+    }    
+    else{
+        document.body.style.setProperty('background-color', 'firebrick');
+    }        
+});
+
 $("select#Cat1").change(function(){
     let ddl = document.getElementById("Cat1");
     let selectedValue = ddl.options[ddl.selectedIndex].value;

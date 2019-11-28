@@ -32,6 +32,7 @@ a {
 p.about{
     color: antiquewhite;
     text-align: center;
+    font-size: 3vw;
 }
 button{
     margin: auto;
@@ -41,16 +42,23 @@ button{
     text-align: center;
 }
 button.lostButton{
-    width: 100px;
-    height: 50px;
+    width: 15vw;
+    height: 10vh;
     display:inline-block;
     margin-right:5px;
+    background-color: antiquewhite;
 }
 button.foundButton{
-    width: 100px;
-    height: 50px;
+    width: 15vw;
+    height: 10vh;
     display:inline-block;
     margin-right:5px;
+    background-color: antiquewhite;
+}
+button.foundList{
+    width: 10vw;
+    height: 2vw;
+    background-color: antiquewhite;
 }
 div.searchResults{
     color: antiquewhite;
@@ -72,4 +80,9 @@ div.searchResults table tr td{
 ul{
     text-align: center;
     list-style-position: inside;
+}
+#colorscheme{
+    float: right;
+    background: coral;
+    border: none;
 }
