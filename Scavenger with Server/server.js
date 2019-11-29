@@ -7,15 +7,49 @@ let mongoose = require('mongoose');
 const connectionURL = process.env.MONGO_URL;
 console.log("connection url = " + connectionURL);
 console.log("proc.env.M_U = " + process.env.MONGO_URL);
+var bodyParser = require("body-parser");
+
 
 // Serve static files from the public dir                                                 
 app.use(express.static("public"));
+
+//the bodyparser will translate the submit button's data to json
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Start the web server on port 3000                                                      
 app.listen(3000, () => {
 	console.log('Listening on http://localhost:3000');
 	console.log('Try visiting http://localhost:3000/hello.html');
     });
+
+
+app.post("/submitLost", function(req, res) {
+
+    /*// Create a student from the submitted form data
+    var stu = new Student({
+        name: req.body.name,
+        gpa: req.body.gpa,
+        birthDate: new Date(req.body.birthdate)
+    });*/
+
+    let entry = new {
+        main: req.body.main,
+        subs: req.body.subs
+    }; //eventually will need to save contact info and image to db also
+
+    submit_to_db(entry, "scav_test_col");
+
+
+});
+
+
+
+
+
+
+
+
+
 
 // entry is a json object containing new entry                                            
 // database is a string that should have value either "scav_demo_found" or "scav_demo_los\
@@ -37,3 +71,4 @@ function submit_to_db(entry, database){
         client.close();
     });
 };
+
