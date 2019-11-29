@@ -105,6 +105,7 @@ function lostSub(){
     let parsedVal = JSON.parse(valStr);
 
     lostObs.push(parsedVal);
+    
 }
 
 function foundSub(){

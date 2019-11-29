@@ -19,7 +19,7 @@ app.listen(3000, () => {
 
 // entry is a json object containing new entry                                            
 // database is a string that should have value either "scav_demo_found" or "scav_demo_los\
-t", but "scav_test_col" can also be used for testing                                      
+//t", but "scav_test_col" can also be used for testing                                      
 function submit_to_db(entry, database){
     const client = new MongoClient(connectionURL, { useNewUrlParser: true });
     client.connect(function (err, client) {
