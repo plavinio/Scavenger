@@ -31,18 +31,33 @@ app.post("/submitLost", function(req, res) {
         gpa: req.body.gpa,
         birthDate: new Date(req.body.birthdate)
     });*/
-	console.log(req);
+	
     let entry = {
         "main": req.body.main,
         "subs": req.body.subs
     }; //eventually will need to save contact info and image to db also
 
-    submit_to_db(entry, "scav_test_col");
-
-
+    let success = submit_to_db(entry, "scav_test_col");
+    console.log("success=" + success);
+    
+    if(success){ 
+	res.set('Content-Type', 'text/html');
+	res.send('<p>success</p>');
+	res.redirect(301, 'http://localhost:3000/Lost.html');
+	console.log("ugh");
+    }
 });
 
+app.post("/submitFound", function(req, res) {
+	let entry = {
+	    "main": req.body.main,
+	    "subs": req.body.subs
+	};
 
+	let success = submit_to_db(entry, "scav_test_col");
+
+	if(success) res.sendStatus(204);
+});
 
 
 
@@ -56,6 +71,7 @@ app.post("/submitLost", function(req, res) {
 //t", but "scav_test_col" can also be used for testing                                      
 function submit_to_db(entry, database){
     const client = new MongoClient(connectionURL, { useNewUrlParser: true });
+    let success = 0;
     client.connect(function (err, client) {
         console.log("Getting as far as connect fxn");
         console.log("Err = " + err);
@@ -65,10 +81,19 @@ function submit_to_db(entry, database){
         const db = client.db("scav_test_db").collection(database);
 
             let ran = db.insertOne(entry);
-            if(ran) console.log("Entry added: \n" + entry + "\n");
-            else console.log("Entry was not added");
-
+            if(ran){ 
+		console.log("Entry added: \n" + entry + "\n");
+		success = 1;
+	    }
+            else {
+		console.log("Entry was not added");
+		success = 0;
+	    }
+	    console.log("before\n");
         client.close();
+	console.log("after\n");
     });
+    console.log("done\n");
+    return success;
 };
 

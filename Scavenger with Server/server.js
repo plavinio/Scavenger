@@ -31,20 +31,31 @@ app.post("/submitLost", function(req, res) {
         gpa: req.body.gpa,
         birthDate: new Date(req.body.birthdate)
     });*/
-	console.log("something\n");
-	console.log(req);
-	console.log("\n some other text");
+	
     let entry = {
         "main": req.body.main,
         "subs": req.body.subs
     }; //eventually will need to save contact info and image to db also
 
     submit_to_db(entry, "scav_test_col");
-
+     
+    res.set('Content-Type', 'text/html');
+    res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+    res.redirect(301, 'http://localhost:3000/Lost.html');
+    console.log("ugh");
 
 });
 
+app.post("/submitFound", function(req, res) {
+	let entry = {
+	    "main": req.body.main,
+	    "subs": req.body.subs
+	};
 
+	let success = submit_to_db(entry, "scav_test_col");
+
+	if(success) res.sendStatus(204);
+});
 
 
 
@@ -58,7 +69,8 @@ app.post("/submitLost", function(req, res) {
 //t", but "scav_test_col" can also be used for testing                                      
 function submit_to_db(entry, database){
     const client = new MongoClient(connectionURL, { useNewUrlParser: true });
-    client.connect(function (err, client) {
+    //let success = 0;
+    client.connect(err => {
         console.log("Getting as far as connect fxn");
         console.log("Err = " + err);
         assert.equal(null, err);
@@ -67,10 +79,19 @@ function submit_to_db(entry, database){
         const db = client.db("scav_test_db").collection(database);
 
             let ran = db.insertOne(entry);
-            if(ran) console.log("Entry added: \n" + entry + "\n");
-            else console.log("Entry was not added");
-
+            if(ran){ 
+		console.log("Entry added: \n" + entry + "\n");
+		success = 1;
+	    }
+            else {
+		console.log("Entry was not added");
+		success = 0;
+	    }
+	    console.log("before close \n");
         client.close();
-    });
+	console.log("after close \n");
+	});
+    console.log("get to just before success");
+    //return success;
 };
 
