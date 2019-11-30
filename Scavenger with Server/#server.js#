@@ -31,9 +31,7 @@ app.post("/submitLost", function(req, res) {
         gpa: req.body.gpa,
         birthDate: new Date(req.body.birthdate)
     });*/
-	console.log("something\n");
-	console.log(req);
-	console.log("\n some other text");
+	
     let entry = {
         "main": req.body.main,
         "subs": req.body.subs
