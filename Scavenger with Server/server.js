@@ -22,7 +22,7 @@ app.listen(3000, () => {
 	console.log('Try visiting http://localhost:3000/scavenger.html');
     });
 
-
+//Adds lost submitted data to database
 app.post("/submitLost", function(req, res) {
 
     /*// Create a student from the submitted form data
@@ -46,6 +46,7 @@ app.post("/submitLost", function(req, res) {
 
 });
 
+//Adds Found submitted data to database
 app.post("/submitFound", function(req, res) {
 	let entry = {
 	    "main": req.body.main,
@@ -58,6 +59,26 @@ app.post("/submitFound", function(req, res) {
 	res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
 	res.redirect(301, 'http://localhost:3000/Found.html');
 });
+
+
+//displays search results
+app.post("/submitSearch", function(req, res) {
+    //let entry;
+    
+    let entries = db.scav_test_col.find().toArray();
+    console.log("first entry returned is: " + entries[0]);
+    
+}
+
+
+
+
+
+
+
+});
+
+
 
 
 
