@@ -42,7 +42,7 @@ app.post("/submitLost", function(req, res) {
     res.set('Content-Type', 'text/html');
     res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
     res.redirect(301, 'http://localhost:3000/Lost.html');
-    console.log("ugh");
+    
 
 });
 
@@ -52,9 +52,11 @@ app.post("/submitFound", function(req, res) {
 	    "subs": req.body.subs
 	};
 
-	let success = submit_to_db(entry, "scav_test_col");
+	submit_to_db(entry, "scav_test_col");
 
-	if(success) res.sendStatus(204);
+	res.set('Content-Type', 'text/html');
+	res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+	res.redirect(301, 'http://localhost:3000/Found.html');
 });
 
 
