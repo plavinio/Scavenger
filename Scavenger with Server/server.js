@@ -64,10 +64,20 @@ app.post("/submitFound", function(req, res) {
 //displays search results
 app.post("/submitSearch", function(req, res) {
     //let entry;
-    
-    let entries = db.scav_test_col.find().toArray();
-    console.log("first entry returned is: " + entries[0]);
-    
+    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
+    client.connect(err => {
+        console.log("Getting as far as connect fxn");
+        console.log("Err = " + err);
+        assert.equal(null, err);
+        console.log("After assert err = " + err);
+        console.log("Connected to server");
+        const db = client.db("scav_test_db").collection(database);
+
+	let entries = db.scav_test_col.find().toArray();
+	console.log("first entry returned is: " + entries[0]);
+
+	client.close();
+     });
 }
 
 
