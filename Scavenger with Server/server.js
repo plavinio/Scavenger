@@ -71,27 +71,15 @@ app.post("/submitSearch", function(req, res) {
         assert.equal(null, err);
         console.log("After assert err = " + err);
         console.log("Connected to server");
-        const db = client.db("scav_test_db").collection(database);
-
-	let entries = db.scav_test_col.find().toArray();
+        const db = client.db("scav_test_db").collection("scav_test_col");
+	console.log("db =" + db + "\n");
+	let entries = db.find().toArray();
 	console.log("first entry returned is: " + entries[0]);
+	console.log("second entry returned is: " + entries[1]);
 
 	client.close();
      });
-
-
-
-
-
 });
-
-
-
-
-
-
-
-
 
 
 // entry is a json object containing new entry                                            
