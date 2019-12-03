@@ -62,8 +62,8 @@ app.post("/submitFound", function(req, res) {
 
 
 //displays search results
-app.post("/submitSearch", function (req, res) {
-    //let entry;
+app.get("/submitSearch", async (req, res) => {
+    let entries;
     const client = new MongoClient(connectionURL, { useNewUrlParser: true });
     client.connect(function(err, client) {
         console.log("Getting as far as connect fxn");
@@ -72,15 +72,20 @@ app.post("/submitSearch", function (req, res) {
         console.log("After assert err = " + err);
         console.log("Connected to server");
         const db = client.db("scav_test_db").collection("scav_test_col");
-	let entries = db.find();
+	entries = db.find({});
 	
 	console.log("first entry returned is: " + JSON.stringify(entries.next()));
 	console.log("second entry returned is: " + JSON.stringify(entries.next()));
 	});
-	
+    res.set('Content-Type', 'text/html');
+    res.send('<p>Success? Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+
     client.close();
 
 });
+
+
+function
 
 
 // entry is a json object containing new entry                                            
