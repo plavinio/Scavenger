@@ -62,23 +62,24 @@ app.post("/submitFound", function(req, res) {
 
 
 //displays search results
-app.post("/submitSearch", function(req, res) {
+app.post("/submitSearch", function (req, res) {
     //let entry;
     const client = new MongoClient(connectionURL, { useNewUrlParser: true });
-    client.connect(err => {
+    client.connect(function(err, client) {
         console.log("Getting as far as connect fxn");
         console.log("Err = " + err);
         assert.equal(null, err);
         console.log("After assert err = " + err);
         console.log("Connected to server");
         const db = client.db("scav_test_db").collection("scav_test_col");
-	console.log("db =" + db + "\n");
-	let entries = db.find().toArray();
-	console.log("first entry returned is: " + entries[0]);
-	console.log("second entry returned is: " + entries[1]);
+	let entries = db.find();
+	
+	console.log("first entry returned is: " + JSON.stringify(entries.next()));
+	console.log("second entry returned is: " + JSON.stringify(entries.next()));
+	});
+	
+    client.close();
 
-	client.close();
-     });
 });
 
 
