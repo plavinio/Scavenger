@@ -38,14 +38,14 @@ $(document).ready(function() { //When DOM ready
     }
 });
 
-$("button#colorscheme").click(function(){
-    if(document.body.style.getPropertyValue('background-color') == 'firebrick'){
-        document.body.style.setProperty('background-color', 'blue'); 
+function colorChange(){
+    if(document.body.style.backgroundColor == "firebrick"){
+        document.body.style.backgroundColor = "blue";
     }    
     else{
-        document.body.style.setProperty('background-color', 'firebrick');
+        document.body.style.backgroundColor = "firebrick"
     }        
-});
+};
 
 $("select#Cat1").change(function(){
     let ddl = document.getElementById("Cat1");
