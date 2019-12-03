@@ -15,11 +15,36 @@ hr {
 h1.logoTxt{
     font-family: 'Lobster';
     color: antiquewhite;
+    font-size: 4vw;
 }
-h2, h3{
+h2{
     font-family: 'Lobster';
     color: antiquewhite;
     text-align: center;
+    font-size: 3vw;
+}
+h3{
+    font-family: 'Lobster';
+    color: antiquewhite;
+    text-align: center;
+    font-size: 2vw;
+}
+}
+label{
+    font-size: 2vw;
+}
+select{
+    background-color: antiquewhite;
+    width: auto;
+    height: auto;
+}
+[type="submit"]{
+    background-color: antiquewhite;
+    width: 10vw;
+    height: 3vw;
+}
+[type = "file"]{
+    background-color: antiquewhite;
 }
 div.form{
     color: antiquewhite;
@@ -37,6 +62,7 @@ p.about{
 button{
     margin: auto;
     display: block;
+    background-color: antiquewhite;
 }
 #container {
     text-align: center;
@@ -57,7 +83,7 @@ button.foundButton{
 }
 button.foundList{
     width: 10vw;
-    height: 2vw;
+    height: 3vw;
     background-color: antiquewhite;
 }
 div.searchResults{
