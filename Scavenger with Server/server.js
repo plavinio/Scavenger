@@ -60,35 +60,39 @@ app.post("/submitFound", function(req, res) {
 	res.redirect(301, 'http://localhost:3000/Found.html');
 });
 
+//global var to get result out of read_from_db
+let entries;
 
 //displays search results
-app.get("/submitSearch", async (req, res) => {
-    let entries;
-    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
-    client.connect(function(err, client) {
-        console.log("Getting as far as connect fxn");
-        console.log("Err = " + err);
-        assert.equal(null, err);
-        console.log("After assert err = " + err);
-        console.log("Connected to server");
-        const db = client.db("scav_test_db").collection("scav_test_col");
-	entries = db.find({});
-	
-	console.log("first entry returned is: " + JSON.stringify(entries.next()));
-	console.log("second entry returned is: " + JSON.stringify(entries.next()));
-	});
+app.get("/", function (req, res) {
+    let entry = {main: req.body.main, subs: req.body.subs};
+    read_from_db(entry, "scav_test_col");
+    
+    console.log("first entry returned is: " + JSON.stringify(entries.next()));
+    console.log("second entry returned is: " + JSON.stringify(entries.next()));
     res.set('Content-Type', 'text/html');
     res.send('<p>Success? Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-
-    client.close();
-
 });
 
+// entry is json object containing search parameters
+// database is a string
+// database is really a collection in a database, should have value either "scav_test_col" 
+//     for testing or "scav_demo_found" in final version 
+function read_from_db(entry, database){
+    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
+    client.connect(async function(err, client) {
+	    assert.equal(null, err);
+	    console.log("After assert err = " + err);
+	    console.log("Connected to server");
+	    const db = client.db("scav_test_db").collection(database);
+	    entries = await db.find({entry});
+	});
+   client.close();
+};
 
-function
 
-
-// entry is a json object containing new entry                                            
+// entry is a json object containing new entry
+// database is really a collection in a database                                            
 // database is a string that should have value either "scav_demo_found" or "scav_demo_los\
 //t", but "scav_test_col" can also be used for testing                                      
 function submit_to_db(entry, database){
