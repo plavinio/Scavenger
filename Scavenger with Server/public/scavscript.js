@@ -40,12 +40,16 @@ $(document).ready(function() { //When DOM ready
 
 function colorChange(){
     if(document.body.style.backgroundColor == "firebrick"){
-        document.body.style.backgroundColor = "blue";
-	document.querySelector(a).setAttribute("href", "Hayley shared a drawing with you 2.png");
+        document.body.style.backgroundColor = "darkslateblue";
+        document.querySelector("img").src = "Hayley shared a drawing with you 2.png";
+        document.querySelector("hr").style.borderColor = "darkcyan";
+        document.getElementById("colorscheme").style.backgroundColor = "darkcyan";
     }    
     else{
         document.body.style.backgroundColor = "firebrick"
-	document.querySelector("a img").setAttribute("src", "Hayley shared a drawing with you.png");
+        document.querySelector("img").src = "Hayley shared a drawing with you.png";
+        document.querySelector("hr").style.borderColor = "coral";
+        document.getElementById("colorscheme").style.backgroundColor = "coral";
     }        
 };
 
