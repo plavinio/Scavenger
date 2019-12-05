@@ -22,6 +22,13 @@ app.listen(3000, () => {
 	console.log('Try visiting http://localhost:3000/scavenger.html');
     });
 
+
+//client decl,  connect wraps all routes
+const client = new MongoClient(connectionURL, { useNewUrlParser: true });
+client.connect((err, client) => {
+    assert.equal(null, err);
+    console.log("After assert err = " + err);
+
 //Adds lost submitted data to database
 app.post("/submitLost", function(req, res) {
 
@@ -41,7 +48,7 @@ app.post("/submitLost", function(req, res) {
      
     res.set('Content-Type', 'text/html');
     res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-    res.redirect(301, 'http://localhost:3000/Lost.html');
+    //res.redirect(301, 'http://localhost:3000/Lost.html');
     
 
 });
@@ -57,16 +64,20 @@ app.post("/submitFound", function(req, res) {
 
 	res.set('Content-Type', 'text/html');
 	res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-	res.redirect(301, 'http://localhost:3000/Found.html');
+	//res.redirect(301, 'http://localhost:3000/Found.html');
 });
 
-//global var to get result out of read_from_db
-let entries;
-
 //displays search results
+//entries is cursor to entries in database collection
 app.get("/submitSearch", function (req, res) {
+    let entries;
     let entry = {main: req.body.main, subs: req.body.subs};
-    read_from_db(entry, "scav_test_col");
+    
+    const db = client.db("scav_test_db").collection("scav_test_col");
+    
+    console.log("before entries assigned");
+	entries = db.find({entry});
+	console.log("after entries assigned");
     
     console.log("first entry returned is: " + JSON.stringify(entries.next()));
     console.log("second entry returned is: " + JSON.stringify(entries.next()));
@@ -74,52 +85,29 @@ app.get("/submitSearch", function (req, res) {
     res.send('<p>Success? Return to Scavenger site: <a href="scavenger.html">return</a></p>');
 });
 
-// entry is json object containing search parameters
-// database is a string
-// database is really a collection in a database, should have value either "scav_test_col" 
-//     for testing or "scav_demo_found" in final version 
-function read_from_db(entry, database){
-    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
-    client.connect(async function(err, client) {
-	    assert.equal(null, err);
-	    console.log("After assert err = " + err);
-	    console.log("Connected to server");
-	    const db = client.db("scav_test_db").collection(database);
-	    entries = await db.find({entry});
-	});
-   client.close();
-};
-
 
 // entry is a json object containing new entry
 // database is really a collection in a database                                            
 // database is a string that should have value either "scav_demo_found" or "scav_demo_los\
 //t", but "scav_test_col" can also be used for testing                                      
 function submit_to_db(entry, database){
-    const client = new MongoClient(connectionURL, { useNewUrlParser: true });
-    //let success = 0;
-    client.connect(err => {
-        console.log("Getting as far as connect fxn");
-        console.log("Err = " + err);
-        assert.equal(null, err);
-        console.log("After assert err = " + err);
-        console.log("Connected to server");
-        const db = client.db("scav_test_db").collection(database);
+    console.log("Getting as far as connect fxn");
+    console.log("Err = " + err);
+    assert.equal(null, err);
+    console.log("After assert err = " + err);
+    console.log("Connected to server");
+    
+    const db = client.db("scav_test_db").collection(database);
 
-            let ran = db.insertOne(entry);
-            if(ran){ 
+    let ran = db.insertOne(entry);
+    if(ran){ 
 		console.log("Entry added: \n" + entry + "\n");
 		success = 1;
-	    }
-            else {
+	} else {
 		console.log("Entry was not added");
 		success = 0;
-	    }
-	    console.log("before close \n");
-        client.close();
-	console.log("after close \n");
-	});
-    console.log("get to just before success");
-    //return success;
+	}
 };
 
+client.close();
+});
