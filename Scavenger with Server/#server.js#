@@ -80,6 +80,7 @@ app.get("/submitSearch", function (req, res) {
 	console.log("after entries assigned");
     
 	let result = entries.toArray();
+	console.log("result is " + result);
 
 	for(let i = 0; i < result.length; i++){
 	    console.log("Entry number " + i + " is: " + result[i] + "\n");
