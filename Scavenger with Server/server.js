@@ -64,7 +64,7 @@ app.post("/submitFound", function(req, res) {
 let entries;
 
 //displays search results
-app.get("/", function (req, res) {
+app.get("/submitSearch", function (req, res) {
     let entry = {main: req.body.main, subs: req.body.subs};
     read_from_db(entry, "scav_test_col");
     
