@@ -45,7 +45,7 @@ function colorChange(){
     }    
     else{
         document.body.style.backgroundColor = "firebrick"
-	document.querySelector("a img").setAttribute("src", "Hayley shared a drawing with you.png");
+	document.
     }        
 };
 
