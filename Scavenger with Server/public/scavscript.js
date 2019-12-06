@@ -1,5 +1,3 @@
-import { Server } from "http";
-
 //Javascript for Scavenger app
 
 //let MasterCats = JSON.parse('"outerCats":{["A":"one", "B":"two", "C":"three"]}');
@@ -135,9 +133,9 @@ function foundSub(){
     foundObs.push(parsedVal);
 }
 
-function searchRes(){
-    //import results from '../Server.js';
-    //console.log("results imported, = " + results);
+function foundRes(){
+    //let results = localStorage.getItem("res");
+    console.log("Results imported = "+results);
 }
 
 $("form#searchForm").submit(function(event){
@@ -145,7 +143,7 @@ $("form#searchForm").submit(function(event){
     if(formErrs){
         event.preventDefault();
     }
-    searchRes();
+    foundRes();
 });
 
 $("form#foundForm").submit(function(event){

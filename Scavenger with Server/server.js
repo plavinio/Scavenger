@@ -87,7 +87,7 @@ app.get("/submitSearch", function (req, res) {
         res.set('Content-Type', 'text/html');
         console.log("set didn't fail");
         res.send('<p>Success?! Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-        //export {results};
+        //localStorage.setItem("res", results);
         //res.json(results);
         //callback(results);
     });
