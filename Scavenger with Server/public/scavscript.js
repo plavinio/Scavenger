@@ -1,3 +1,5 @@
+import { Server } from "http";
+
 //Javascript for Scavenger app
 
 //let MasterCats = JSON.parse('"outerCats":{["A":"one", "B":"two", "C":"three"]}');
@@ -133,11 +135,17 @@ function foundSub(){
     foundObs.push(parsedVal);
 }
 
+function searchRes(){
+    //import results from '../Server.js';
+    //console.log("results imported, = " + results);
+}
+
 $("form#searchForm").submit(function(event){
     checkForm();
     if(formErrs){
         event.preventDefault();
     }
+    searchRes();
 });
 
 $("form#foundForm").submit(function(event){
