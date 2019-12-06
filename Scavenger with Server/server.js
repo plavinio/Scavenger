@@ -75,18 +75,34 @@ app.get("/submitSearch", function (req, res) {
     
     const db = client.db("scav_test_db").collection("scav_test_col");
     
-    console.log("before entries assigned");
-	entries = db.find({entry});
-	console.log("after entries assigned");
+    //console.log("before entries assigned");
+    //entries = db.find({entry});
+	//console.log("after entries assigned");
     
-	let result = entries.toArray();
 
-	for(let i = 0; i < result.length; i++){
-	    console.log("Entry number " + i + " is: " + result[i] + "\n");
-	}
+	db.find({}).toArray(function(err, results) {
+		assert.equal(err, null);
+        console.log(results)
+        console.log("results are get\n");
+        res.set('Content-Type', 'text/html');
+        console.log("set didn't fail");
+        res.send('<p>Success?! Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+        //localStorage.setItem("res", results);
+        //res.json(results);
+        //callback(results);
+    });
 
-    res.set('Content-Type', 'text/html');
-    res.send('<p>Success? Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+    console.log("outside parens now\n");
+
+
+	//let result = entries.toArray();
+	//console.log("result is " + result);
+
+	//for(let i = 0; i < result.length; i++){
+	//    console.log("Entry number " + i + " is: " + result[i] + "\n");
+	//}
+
+    // res goes here
 });
 
 
@@ -113,5 +129,6 @@ function submit_to_db(entry, database){
 	}
 };
 
-client.close();
+
 });
+client.close();

@@ -133,11 +133,17 @@ function foundSub(){
     foundObs.push(parsedVal);
 }
 
+function foundRes(){
+    //let results = localStorage.getItem("res");
+    console.log("Results imported = "+results);
+}
+
 $("form#searchForm").submit(function(event){
     checkForm();
     if(formErrs){
         event.preventDefault();
     }
+    foundRes();
 });
 
 $("form#foundForm").submit(function(event){
