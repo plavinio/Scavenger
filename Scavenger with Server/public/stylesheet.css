@@ -17,6 +17,9 @@ h1.logoTxt{
     color: antiquewhite;
     font-size: 4vw;
 }
+h1.logoTxt:hover{
+    color:bisque;
+}
 h2{
     font-family: 'Lobster';
     color: antiquewhite;
@@ -40,9 +43,24 @@ select{
 }
 [type="submit"]{
     background-color: antiquewhite;
-    width: 10vw;
-    height: 3vw;
+    width: 9vw;
+    height: 2vw;
+    /*width: 15%;
+    /*height: 100px;
+    /*margin-right:5px;*/
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: none;
+
 }
+[type="submit"]:hover{
+    border: 8px dashed coral;
+    color: black;
+}
+a:hover{
+    color:coral;
+}
+
 [type = "file"]{
     background-color: antiquewhite;
 }
@@ -66,26 +84,54 @@ button{
 }
 #container {
     text-align: center;
+    
 }
 button.lostButton{
-    width: 15vw;
-    height: 10vh;
+    width: 15%;
+    height: 100px;
     display:inline-block;
     margin-right:5px;
     background-color: antiquewhite;
+    border-radius: 10px;
+    border: none;
+}
+.lostButton:hover {
+    /*background-color: coral;*/
+    border: 8px dashed coral;
+    color: black;
 }
 button.foundButton{
-    width: 15vw;
-    height: 10vh;
+    width: 15%;
+    height: 100px;
     display:inline-block;
     margin-right:5px;
     background-color: antiquewhite;
+    border-radius: 10px;
+    border: 4px solid bisque;
+}
+.foundButton:hover {
+    /*background-color: coral;*/
+    border: 8px dashed coral;
+    color: black;
+}
+#colorscheme:hover {
+    background-color: antiquewhite;
+    border: 1px dashed coral;
+    color: black;
 }
 button.foundList{
     width: 10vw;
     height: 3vw;
+    border-radius: 10px;
+    border: 4px solid bisque;
     background-color: antiquewhite;
 }
+.foundList:hover {
+    /*background-color: coral;*/
+    border: 8px dashed coral;
+    color: black;
+}
+
 div.searchResults{
     color: antiquewhite;
     border: 2px solid coral;
@@ -109,6 +155,8 @@ ul{
 }
 #colorscheme{
     float: right;
+    border-radius: 10px;
     background: coral;
-    border: none;
+    border: 1px solid coral;
 }
+
