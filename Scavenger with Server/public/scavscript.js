@@ -1,5 +1,6 @@
 //Javascript for Scavenger app
 
+
 //let MasterCats = JSON.parse('"outerCats":{["A":"one", "B":"two", "C":"three"]}');
 let cats = [
     {
@@ -172,7 +173,10 @@ function foundSub(){
 
 function foundRes(){
     //let results = localStorage.getItem("res");
-    console.log("Results imported = "+results);
+
+    
+
+    console.log("Results imported = "+ results);
 }
 
 function spoofSearch(){
@@ -204,8 +208,8 @@ $("form#searchForm").submit(function(event){
     if(formErrs){
         event.preventDefault();
     }
-    //foundRes();
-    spoofSearch();
+    foundRes();
+    //spoofSearch();
     event.preventDefault();
 });
 
