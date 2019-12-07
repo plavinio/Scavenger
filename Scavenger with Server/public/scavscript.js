@@ -77,7 +77,7 @@ $(document).ready(function() { //When DOM ready
 });
 
 function colorChange(){
-    if(document.body.style.backgroundColor == "firebrick"){
+   if(document.body.style.backgroundColor == "firebrick"){
         document.body.style.backgroundColor = "darkslateblue";
         document.querySelector("img").src = "Hayley shared a drawing with you 2.png";
         document.querySelector("hr").style.borderColor = "darkcyan";
@@ -88,8 +88,14 @@ function colorChange(){
         document.querySelector("img").src = "Hayley shared a drawing with you.png";
         document.querySelector("hr").style.borderColor = "coral";
         document.getElementById("colorscheme").style.backgroundColor = "coral";
-    }        
+	}
+    //if(document.body.className === "bluescheme"){document.body.style.setProperty("class", "redscheme");}
+    //else{document.body.style.setProperty("class", "bluescheme");}
 };
+
+//function colorKeeper(){
+//    *********************************************************************************************************
+//};
 
 $("select#Cat1").change(function(){
     let ddl = document.getElementById("Cat1");
