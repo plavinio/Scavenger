@@ -41,7 +41,9 @@ app.post("/submitLost", function(req, res) {
 	
     let entry = {
         "main": req.body.main,
-        "subs": req.body.subs
+        "subs": req.body.subs,
+        "desc": req.body.desc,
+        "contact": req.body.contact
     }; //eventually will need to save contact info and image to db also
 
     submit_to_db(entry, "scav_test_col");
@@ -57,7 +59,9 @@ app.post("/submitLost", function(req, res) {
 app.post("/submitFound", function(req, res) {
 	let entry = {
 	    "main": req.body.main,
-	    "subs": req.body.subs
+        "subs": req.body.subs,
+        "desc": req.body.desc,
+        "contact": req.body.contact
 	};
 
 	submit_to_db(entry, "scav_test_col");
@@ -71,7 +75,7 @@ app.post("/submitFound", function(req, res) {
 //entries is cursor to entries in database collection
 app.get("/submitSearch", function (req, res) {
     let entries;
-    let entry = {main: req.body.main, subs: req.body.subs};
+    let entry = {"main": req.body.main, "subs": req.body.subs};
     
     const db = client.db("scav_test_db").collection("scav_test_col");
     
@@ -79,24 +83,24 @@ app.get("/submitSearch", function (req, res) {
     //entries = db.find({entry});
 	//console.log("after entries assigned");
     
+    console.log("entry = " + entry + "\n");
+    console.log("r.b.main = " + req.body.main + "\n");
 
-	db.find({}).toArray(function(err, results) {
+	db.find(entry).toArray(function(err, results) {
 		assert.equal(err, null);
         console.log(results)
         
-        
-
         console.log("results are get\n");
         res.set('Content-Type', 'text/html');
         console.log("set didn't fail");
-        res.send('<p>Success?! Return to Scavenger site: <a href="scavenger.html">return</a></p>');
+        res.send(results);
         
         //localStorage.setItem("res", results);
         //res.json(results);
         //callback(results);
     });
 
-    console.log("outside parens now\n");
+    //console.log("outside parens now\n");
 
 
 	//let result = entries.toArray();

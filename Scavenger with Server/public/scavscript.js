@@ -172,11 +172,35 @@ function foundSub(){
 }
 
 function foundRes(){
-    //let results = localStorage.getItem("res");
-
     
+    let req = new XMLHttpRequest();
+    req.open('GET', '/submitSearch', false);
+    req.send();
 
-    console.log("Results imported = "+ results);
+    let results = req.responseText;
+    //JSON.parse(req.responseText);
+
+    let resultsFound = false;
+    let count = 1;
+
+    let c1 = document.getElementById("Cat1");
+    let cat1val = c1.options[c1.selectedIndex].value;
+
+    let c2 = document.getElementById("Cat2");
+    let cat2val = c2.options[c2.selectedIndex].value;
+
+    alert(results);
+
+    $("div.searchResults").empty();
+    for(item in results){
+        if(results[item]){
+            resultsFound = true;
+            $('<details> <summary>'+count+') </summary> <p>Description: '+results[x].description+'</p> <p>Contact info: '+results[x].contact+'</p> </details>').appendTo("div.searchResults");
+            count++;
+        }
+    }
+
+    //console.log("Results imported = "+ JSON.parse(results));
 }
 
 function spoofSearch(){
