@@ -27,7 +27,44 @@ let cats = [
 
 let lostObs = [];
 
-let foundObs = [];
+let foundObs = [
+    {
+        "main": "urgent",
+        "sub": "keys",
+        "contact": "nromanoff@umass.edu",
+        "description": "I found a key in the lawn by the library, looks like a car key"
+    },
+    {
+        "main": "tech",
+        "sub": "laptop",
+        "contact": "srogers@umass.edu",
+        "description": "I found a laptop in the library, tell me the stickers on it to verify it's yours"
+    },
+    {
+        "main": "tech",
+        "sub": "charger",
+        "contact": "pparker@umass.edu",
+        "description": "I found a red micro usb phone charger in the ILC"
+    },
+    {
+        "main": "clothing",
+        "sub": "scarf",
+        "contact": "tstark@umass.edu",
+        "description": "found a Bruins scarf in Bartlett, you're probably cold without it."
+    },
+    {
+        "main": "urgent",
+        "sub": "keys",
+        "contact": "bbanner@umass.edu",
+        "description": "Room key, found by the pond"
+    },
+    {
+        "main": "academic",
+        "sub": "UCard",
+        "contact": "cbarton@umass.edu",
+        "description": "Found a UCard belonging to Stan Lee in Berk"
+    }
+];
 
 let formErrs = false;
 
@@ -138,12 +175,38 @@ function foundRes(){
     console.log("Results imported = "+results);
 }
 
+function spoofSearch(){
+    let resultsFound = false;
+    let count = 1;
+    let c1 = document.getElementById("Cat1");
+    let cat1val = c1.options[c1.selectedIndex].value;
+
+    let c2 = document.getElementById("Cat2");
+    let cat2val = c2.options[c2.selectedIndex].value;
+
+    $("div.searchResults").empty();
+
+    for(x in foundObs){
+        if(foundObs[x].main == cat1val && foundObs[x].sub == cat2val){
+            resultsFound = true;
+
+            $('<details> <summary>'+count+') </summary> <p>Description: '+foundObs[x].description+'</p> <p>Contact info: '+foundObs[x].contact+'</p> </details>').appendTo("div.searchResults");
+            count++;
+        }
+    }
+    if(!resultsFound){
+        $('<p>No results found</p>').appendTo("div.searchResults");
+    }
+}
+
 $("form#searchForm").submit(function(event){
     checkForm();
     if(formErrs){
         event.preventDefault();
     }
-    foundRes();
+    //foundRes();
+    spoofSearch();
+    event.preventDefault();
 });
 
 $("form#foundForm").submit(function(event){
