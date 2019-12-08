@@ -178,35 +178,35 @@ function foundSub(){
 }
 
 function foundRes(){
-    
-    let req = new XMLHttpRequest();
-    req.open('GET', '/submitSearch', false);
-    req.send();
-
-    let results = req.responseText;
-    //JSON.parse(req.responseText);
-
-    let resultsFound = false;
-    let count = 1;
-
     let c1 = document.getElementById("Cat1");
     let cat1val = c1.options[c1.selectedIndex].value;
 
     let c2 = document.getElementById("Cat2");
     let cat2val = c2.options[c2.selectedIndex].value;
 
-    alert(results);
+    let req = new XMLHttpRequest();
+    req.open('GET', '/submitSearch?main=' + cat1val + '&subs=' + cat2val, false);
+    req.send();
+
+    let results = JSON.parse(req.responseText);
+
+    let resultsFound = false;
+    let count = 1;
+
+    //alert(results);
 
     $("div.searchResults").empty();
     for(item in results){
         if(results[item]){
             resultsFound = true;
-            $('<details> <summary>'+count+') </summary> <p>Description: '+results[x].description+'</p> <p>Contact info: '+results[x].contact+'</p> </details>').appendTo("div.searchResults");
+            $('<details> <summary>'+count+') </summary> <p>Description: '+results[item].desc+'</p> <p>Contact info: '+results[item].contact+'</p> </details>').appendTo("div.searchResults");
             count++;
         }
     }
+    if(!resultsFound){
+        $('<p>No results found</p>').appendTo("div.searchResults");
+    }
 
-    //console.log("Results imported = "+ JSON.parse(results));
 }
 
 function spoofSearch(){

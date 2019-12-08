@@ -32,25 +32,18 @@ client.connect((err, client) => {
 //Adds lost submitted data to database
 app.post("/submitLost", function(req, res) {
 
-    /*// Create a student from the submitted form data
-    var stu = new Student({
-        name: req.body.name,
-        gpa: req.body.gpa,
-        birthDate: new Date(req.body.birthdate)
-    });*/
-	
     let entry = {
         "main": req.body.main,
         "subs": req.body.subs,
-        "desc": req.body.desc,
+        "desc": req.body.description,
         "contact": req.body.contact
-    }; //eventually will need to save contact info and image to db also
+    };
 
-    submit_to_db(entry, "scav_test_col");
+    submit_to_db(entry, "scav_demo_lost");
      
     res.set('Content-Type', 'text/html');
     res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-    //res.redirect(301, 'http://localhost:3000/Lost.html');
+    
     
 
 });
@@ -60,57 +53,44 @@ app.post("/submitFound", function(req, res) {
 	let entry = {
 	    "main": req.body.main,
         "subs": req.body.subs,
-        "desc": req.body.desc,
+        "desc": req.body.description,
         "contact": req.body.contact
 	};
 
-	submit_to_db(entry, "scav_test_col");
+	submit_to_db(entry, "scav_demo_found");
 
 	res.set('Content-Type', 'text/html');
 	res.send('<p>Success. Return to Scavenger site: <a href="scavenger.html">return</a></p>');
-	//res.redirect(301, 'http://localhost:3000/Found.html');
+
 });
 
 //displays search results
 //entries is cursor to entries in database collection
 app.get("/submitSearch", function (req, res) {
     let entries;
-    let entry = {"main": req.body.main, "subs": req.body.subs};
+    let entry = {"main": req.query.main, "subs": req.query.subs};
     
-    const db = client.db("scav_test_db").collection("scav_test_col");
+    const db = client.db("scav_test_db").collection("scav_demo_found");
     
     //console.log("before entries assigned");
     //entries = db.find({entry});
 	//console.log("after entries assigned");
     
-    console.log("entry = " + entry + "\n");
+    console.log("entry = " + JSON.stringify(entry) + "\n");
     console.log("r.b.main = " + req.body.main + "\n");
+    console.log("query: " + JSON.stringify(req.query));
 
 	db.find(entry).toArray(function(err, results) {
 		assert.equal(err, null);
-        console.log(results)
+        console.log("results are " + results)
         
         console.log("results are get\n");
         res.set('Content-Type', 'text/html');
         console.log("set didn't fail");
         res.send(results);
         
-        //localStorage.setItem("res", results);
-        //res.json(results);
-        //callback(results);
     });
 
-    //console.log("outside parens now\n");
-
-
-	//let result = entries.toArray();
-	//console.log("result is " + result);
-
-	//for(let i = 0; i < result.length; i++){
-	//    console.log("Entry number " + i + " is: " + result[i] + "\n");
-	//}
-
-    // res goes here
 });
 
 
