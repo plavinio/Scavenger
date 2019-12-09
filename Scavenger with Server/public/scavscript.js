@@ -79,14 +79,13 @@ $(document).ready(function() { //When DOM ready
 	document.body.style.backgroundColor = "darkslateblue";
         document.querySelector("img").src = "Hayley shared a drawing with you 2.png";
         document.querySelector("hr").style.borderColor = "darkcyan";
-       document.getElementById("colorscheme").style.backgroundColor = "darkcyan";
+	document.getElementById("colorscheme").style.backgroundColor = "darkcyan";
     }
-    else if (scheme == 'red'){
+    else{
 	document.body.style.backgroundColor = "firebrick"
         document.querySelector("img").src = "Hayley shared a drawing with you.png";
         document.querySelector("hr").style.borderColor = "coral";
         document.getElementById("colorscheme").style.backgroundColor = "coral";
-        localStorage.setItem("schemeselector","red");
     }
 });
 
