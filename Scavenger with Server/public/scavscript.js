@@ -187,8 +187,14 @@ function foundRes(){
     let dbchoice = document.getElementById("WhichDB");
     let dbval = dbchoice.options[dbchoice.selectedIndex].value;
     let dbname;
-    if(dbval == "Lost Items") dbname = 'scav_demo_lost';
-    else dbname = 'scav_demo_found';
+    if(dbval == "Lost Items"){
+         dbname = 'scav_demo_lost';
+         document.getElementById("title").innerHTML = "Current Lost Items";
+    }
+    else{
+        dbname = 'scav_demo_found';
+        document.getElementById("title").innerHTML = "Current Found Items";
+    } 
     
     let req = new XMLHttpRequest();
     req.open('GET', '/submitSearch?main=' + cat1val + '&subs=' + cat2val + '&whichdb=' + dbname, false);
