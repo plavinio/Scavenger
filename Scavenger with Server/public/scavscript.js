@@ -275,3 +275,13 @@ $("form#lostForm").submit(function(event){
         event.preventDefault();
     }
 });
+
+
+
+
+$("select#WhichDB").change(function(){
+    let ddl = document.getElementById("WhichDB");
+    let selectedValue = ddl.options[ddl.selectedIndex].value;
+
+    
+}
