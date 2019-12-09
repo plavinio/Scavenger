@@ -15,6 +15,12 @@
 
     <form action = "/submitSearch" method = "GET" id="searchForm">
       <div class = "form">
+	<label for="WhichDB"><strong>Search from list of:</strong></label>
+	<select name="DB" id="WhichDB">
+	  <option>Found Items</option>
+	  <option>Lost Items</option>
+	</select>
+	<br><br>
         <label for="Cat1">Category 1: </label>
         <select name="main" id="Cat1">
     	    <!--Add more options based on what we decide-->

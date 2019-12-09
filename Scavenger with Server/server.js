@@ -70,7 +70,7 @@ app.get("/submitSearch", function (req, res) {
     let entries;
     let entry = {"main": req.query.main, "subs": req.query.subs};
     
-    const db = client.db("scav_test_db").collection("scav_demo_found");
+    const db = client.db("scav_test_db").collection(req.query.whichdb);
     
     //console.log("before entries assigned");
     //entries = db.find({entry});

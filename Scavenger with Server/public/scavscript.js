@@ -184,8 +184,11 @@ function foundRes(){
     let c2 = document.getElementById("Cat2");
     let cat2val = c2.options[c2.selectedIndex].value;
 
+    let dbchoice = document.getElementById("WhichDB");
+    let dbval = dbchoice.options[dbchoice.selectedIndex].value;
+    
     let req = new XMLHttpRequest();
-    req.open('GET', '/submitSearch?main=' + cat1val + '&subs=' + cat2val, false);
+    req.open('GET', '/submitSearch?main=' + cat1val + '&subs=' + cat2val + '&whichdb=' + dbval, false);
     req.send();
 
     let results = JSON.parse(req.responseText);
