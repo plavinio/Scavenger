@@ -276,15 +276,26 @@ $("form#searchForm").submit(function(event){
 });
 
 $("form#foundForm").submit(function(event){
-    checkForm();
-    if(formErrs){
+    //checkForm();
+    //if(formErrs){
+    //    event.preventDefault();
+    //}
+    //foundSub();
+    if(window.confirm("WAIT! Only press ok if you've checked the lost/found items list. Otherwise, press cancel.")){
+	checkForm();
+        if(formErrs){
+            event.preventDefault();
+        }
+        foundSub();
+    }
+    else{
         event.preventDefault();
     }
-    foundSub();
+
 });
 
 $("form#lostForm").submit(function(event){
-    if(window.confirm("WAIT! Only press ok if you've checked the found items list. Otherwise, press cancel.")){
+    if(window.confirm("WAIT! Only press ok if you've checked the lost/found items list. Otherwise, press cancel.")){
         checkForm();
         if(formErrs){
             event.preventDefault();
