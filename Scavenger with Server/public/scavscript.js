@@ -107,6 +107,7 @@ function colorChange(){
         document.getElementById("colorscheme").style.backgroundColor = "coral";
 	document.getElementById("colorscheme").style.border = "1px solid coral";
 	localStorage.setItem("schemeselector","red");
+	
 	}
     //if(document.body.className === "bluescheme"){document.body.style.setProperty("class", "redscheme");}
     //else{document.body.style.setProperty("class", "bluescheme");}
