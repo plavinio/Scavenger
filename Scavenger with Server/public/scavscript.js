@@ -109,13 +109,7 @@ function colorChange(){
 	localStorage.setItem("schemeselector","red");
 	
 	}
-    //if(document.body.className === "bluescheme"){document.body.style.setProperty("class", "redscheme");}
-    //else{document.body.style.setProperty("class", "bluescheme");}
 };
-
-//function colorKeeper(){
-//    *********************************************************************************************************
-//};
 
 $("select#Cat1").change(function(){
     let ddl = document.getElementById("Cat1");
@@ -306,7 +300,6 @@ $("form#lostForm").submit(function(event){
         event.preventDefault();
     }
 });
-
 
 
 
